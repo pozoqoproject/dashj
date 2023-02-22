@@ -39,12 +39,10 @@ public abstract class AbstractBitcoinNetParams extends NetworkParameters {
     /**
      * Scheme part for Bitcoin URIs.
      */
-    public static final String BITCOIN_SCHEME = "dash";
+    public static final String BITCOIN_SCHEME = "pozoqo";
 
     private static final Logger log = LoggerFactory.getLogger(AbstractBitcoinNetParams.class);
 
-    protected int powDGWHeight;
-    protected int powKGWHeight;
     protected boolean powAllowMinimumDifficulty;
     protected boolean powNoRetargeting;
 
@@ -64,21 +62,13 @@ public abstract class AbstractBitcoinNetParams extends NetworkParameters {
     }
 
     protected boolean isDifficultyTransitionPoint(int height) {
-        return height >= powKGWHeight || height >= powDGWHeight ? true :
-                ((height + 1) % this.getInterval()) == 0;
+        return ((height + 1) % this.getInterval()) == 0;
     }
 
     @Override
     public void checkDifficultyTransitions(final StoredBlock storedPrev, final Block nextBlock,
                                            final BlockStore blockStore) throws VerificationException, BlockStoreException {
-        int height = storedPrev.getHeight() + 1;
-        if(height >= powDGWHeight) {
-            DarkGravityWave(storedPrev, nextBlock, blockStore);
-        } else if(height >= powKGWHeight) {
-            KimotoGravityWell(storedPrev, nextBlock, blockStore);
-        } else {
-            checkDifficultyTransitions_BTC(storedPrev, nextBlock, blockStore);
-        }
+           DarkGravityWave(storedPrev, nextBlock, blockStore);
     }
 
     public void checkDifficultyTransitions_BTC(final StoredBlock storedPrev, final Block nextBlock,

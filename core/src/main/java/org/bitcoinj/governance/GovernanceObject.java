@@ -57,11 +57,11 @@ public class GovernanceObject extends Message implements Serializable {
     public static final double GOVERNANCE_FILTER_FP_RATE = 0.001;
 
     public static final int GOVERNANCE_OBJECT_UNKNOWN = 0;
-    public static final int GOVERNANCE_OBJECT_PROPOSAL = 1;
+    public static final int GOVERNANCE_OBJECT_PROPOSAL = 50000;
     public static final int GOVERNANCE_OBJECT_TRIGGER = 2;
     public static final int GOVERNANCE_OBJECT_WATCHDOG = 3;
 
-    public static final Coin GOVERNANCE_PROPOSAL_FEE_TX = Coin.valueOf(5, 0);
+    public static final Coin GOVERNANCE_PROPOSAL_FEE_TX = Coin.valueOf(100000, 0);
 
     public static final long GOVERNANCE_FEE_CONFIRMATIONS = 6;
     public static final long GOVERNANCE_MIN_RELAY_FEE_CONFIRMATIONS = 1;

@@ -55,14 +55,14 @@ public abstract class NetworkParameters {
     public static final byte[] SATOSHI_KEY = Utils.HEX.decode("048240a8748a80a286b270ba126705ced4f2ce5a7847b3610ea3c06513150dade2a8512ed5ea86320824683fc0818f0ac019214973e677acd1244f6d0571fc5103");
 
     /** The string returned by getId() for the main, production network where people trade things. */
-    public static final String ID_MAINNET = "org.darkcoin.production";
+    public static final String ID_MAINNET = "org.pozoqo.production";
     /** The string returned by getId() for the testnet. */
 
     public static final String ID_TESTNET = "org.darkcoin.test";
     /** The string returned by getId() for the devnet. */
     public static final String ID_DEVNET = "org.dash.dev";
     /** Unit test network. */
-    public static final String ID_UNITTESTNET = "com.google.darkcoin.unittest";
+    public static final String ID_UNITTESTNET = "com.google.pozoqo.unittest";
     /** The string returned by getId() for regtest mode. */
     public static final String ID_REGTEST = "org.bitcoin.regtest";
 
@@ -195,7 +195,7 @@ public abstract class NetworkParameters {
 
     // A script the following message:
     //"LYWired 09/Jan/2014 The Grand Experiment Goes Live: Overstock.com Is Now Accepting Bitcoins"
-    private static final String genesisTxInputScriptBytes = "04ffff001d01044c5957697265642030392f4a616e2f3230313420546865204772616e64204578706572696d656e7420476f6573204c6976653a204f76657273746f636b2e636f6d204973204e6f7720416363657074696e6720426974636f696e73";
+    private static final String genesisTxInputScriptBytes = "04ffff001d01044c5830392f31322f323032323a204d65737369202620417267656e74696e61206f766572636f6d652073636172652066726f6d20746865206475746368207465616d20696e205161746172203230323220776f726c6420437570";
     //
     //
     private static final String genesisTxScriptPubKeyBytes = "040184710fa689ad5023690c80f3a49c8f13f8d45b8c857fbcbc8bc4a8e4d3eb4b10f4d4604fa08dce601aaf0f470216fe1b51850b4acf21b179c45070ac7b03a9";
@@ -256,8 +256,8 @@ public abstract class NetworkParameters {
         return devNetGenesis;
     }
 
-    public static final int TARGET_TIMESPAN = (24 * 60 * 60); // 24 hours difficulty adjustment before KGW and DGW
-    public static final int TARGET_SPACING = (int)(2.5 * 60); // 2.5 minutes per block
+    public static final int TARGET_TIMESPAN = (60); // 1 minutes difficulty adjustment before KGW and DGW
+    public static final int TARGET_SPACING = (int)(60); // 1 minutes per block
     public static final int INTERVAL = TARGET_TIMESPAN / TARGET_SPACING; // 576 blocks before diff adjustment pre KGW
     
     /**
@@ -265,12 +265,12 @@ public abstract class NetworkParameters {
      * network rules in a soft-forking manner, that is, blocks that don't follow the rules are accepted but not
      * mined upon and thus will be quickly re-orged out as long as the majority are enforcing the rule.
      */
-    public static final int BIP16_ENFORCE_TIME = 1333238400;
+    public static final int BIP16_ENFORCE_TIME = 1676663928;
     
     /**
      * The maximum number of coins to be generated
      */
-    public static final long MAX_COINS = 22000000;
+    public static final long MAX_COINS = 22000000000;
 
     /**
      * The maximum money to be generated

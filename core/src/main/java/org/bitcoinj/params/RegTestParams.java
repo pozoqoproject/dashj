@@ -77,8 +77,6 @@ public class RegTestParams extends AbstractBitcoinNetParams {
         nGovernanceMinQuorum = 1;
         nGovernanceFilterElements = 100;
 
-        powDGWHeight = 34140;
-        powKGWHeight = 15200;
         powAllowMinimumDifficulty = true;
         powNoRetargeting = true;
 

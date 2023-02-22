@@ -107,8 +107,6 @@ public class TestNet3Params extends AbstractBitcoinNetParams {
         nGovernanceMinQuorum = 1;
         nGovernanceFilterElements = 500;
 
-        powDGWHeight = 4002;
-        powKGWHeight = 4002;
         powAllowMinimumDifficulty = true;
         powNoRetargeting = false;
 

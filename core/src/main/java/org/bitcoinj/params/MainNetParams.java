@@ -44,19 +44,19 @@ public class MainNetParams extends AbstractBitcoinNetParams {
 
         // 00000fffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
         maxTarget = Utils.decodeCompactBits(0x1e0fffffL);
-        dumpedPrivateKeyHeader = 204;
-        addressHeader = 76;
-        p2shHeader = 16;
-        port = 9999;
-        packetMagic = 0xbf0c6bbd;
+        dumpedPrivateKeyHeader = 183;
+        addressHeader = 55;
+        p2shHeader = 117;
+        port = 40999;
+        packetMagic = 0xeebefebd;
         bip32HeaderP2PKHpub = 0x0488b21e; // The 4 byte header that serializes in base58 to "xpub".
         bip32HeaderP2PKHpriv = 0x0488ade4; // The 4 byte header that serializes in base58 to "xprv"
         dip14HeaderP2PKHpub = 0x0eecefc5; // The 4 byte header that serializes in base58 to "dpmp".
         dip14HeaderP2PKHpriv = 0x0eecf02e; // The 4 byte header that serializes in base58 to "dpms"
 
         genesisBlock.setDifficultyTarget(0x1e0ffff0L);
-        genesisBlock.setTime(1390095618L);
-        genesisBlock.setNonce(28917698);
+        genesisBlock.setTime(1676218176L);
+        genesisBlock.setNonce(30188923);
 
         majorityEnforceBlockUpgrade = MAINNET_MAJORITY_ENFORCE_BLOCK_UPGRADE;
         majorityRejectBlockOutdated = MAINNET_MAJORITY_REJECT_BLOCK_OUTDATED;
@@ -66,256 +66,58 @@ public class MainNetParams extends AbstractBitcoinNetParams {
         subsidyDecreaseBlockCount = 210240;
         spendableCoinbaseDepth = 100;
         String genesisHash = genesisBlock.getHashAsString();
-        checkState(genesisHash.equals("00000ffd590b1485b3caadc19b22e6379c733355108f107a430458cdf3407ab6"),
+        checkState(genesisHash.equals("00000c9a4d546d148187c142944cf4045de11d4bb4d6306435f1a4b420c44285"),
                 genesisHash);
 
         dnsSeeds = new String[] {
-                "dnsseed.dash.org"
+                "129.151.165.124"
         };
 
         // This contains (at a minimum) the blocks which are not BIP30 compliant. BIP30 changed how duplicate
         // transactions are handled. Duplicated transactions could occur in the case where a coinbase had the same
         // extraNonce and the same outputs but appeared at different heights, and greatly complicated re-org handling.
         // Having these here simplifies block connection logic considerably.
-        checkpoints.put(  1500, Sha256Hash.wrap("000000aaf0300f59f49bc3e970bad15c11f961fe2347accffff19d96ec9778e3"));
-        checkpoints.put(  4991, Sha256Hash.wrap("000000003b01809551952460744d5dbb8fcbd6cbae3c220267bf7fa43f837367"));
-        checkpoints.put(  9918, Sha256Hash.wrap("00000000213e229f332c0ffbe34defdaa9e74de87f2d8d1f01af8d121c3c170b"));
-        checkpoints.put( 16912, Sha256Hash.wrap("00000000075c0d10371d55a60634da70f197548dbbfa4123e12abfcbc5738af9"));
-        checkpoints.put( 23912, Sha256Hash.wrap("0000000000335eac6703f3b1732ec8b2f89c3ba3a7889e5767b090556bb9a276"));
-        checkpoints.put( 35457, Sha256Hash.wrap("0000000000b0ae211be59b048df14820475ad0dd53b9ff83b010f71a77342d9f"));
-        checkpoints.put( 45479, Sha256Hash.wrap("000000000063d411655d590590e16960f15ceea4257122ac430c6fbe39fbf02d"));
-        checkpoints.put( 55895, Sha256Hash.wrap("0000000000ae4c53a43639a4ca027282f69da9c67ba951768a20415b6439a2d7"));
-        checkpoints.put( 68899, Sha256Hash.wrap("0000000000194ab4d3d9eeb1f2f792f21bb39ff767cb547fe977640f969d77b7"));
-        checkpoints.put( 74619, Sha256Hash.wrap("000000000011d28f38f05d01650a502cc3f4d0e793fbc26e2a2ca71f07dc3842"));
-        checkpoints.put( 75095, Sha256Hash.wrap("0000000000193d12f6ad352a9996ee58ef8bdc4946818a5fec5ce99c11b87f0d"));
-        checkpoints.put( 88805, Sha256Hash.wrap("00000000001392f1652e9bf45cd8bc79dc60fe935277cd11538565b4a94fa85f"));
-        checkpoints.put(107996, Sha256Hash.wrap("00000000000a23840ac16115407488267aa3da2b9bc843e301185b7d17e4dc40"));
-        checkpoints.put(137993, Sha256Hash.wrap("00000000000cf69ce152b1bffdeddc59188d7a80879210d6e5c9503011929c3c"));
-        checkpoints.put(167996, Sha256Hash.wrap("000000000009486020a80f7f2cc065342b0c2fb59af5e090cd813dba68ab0fed"));
-        checkpoints.put(207992, Sha256Hash.wrap("00000000000d85c22be098f74576ef00b7aa00c05777e966aff68a270f1e01a5"));
-        checkpoints.put(312645, Sha256Hash.wrap("0000000000059dcb71ad35a9e40526c44e7aae6c99169a9e7017b7d84b1c2daf"));
-        checkpoints.put(407452, Sha256Hash.wrap("000000000003c6a87e73623b9d70af7cd908ae22fee466063e4ffc20be1d2dbc"));
-        checkpoints.put(523412, Sha256Hash.wrap("000000000000e54f036576a10597e0e42cc22a5159ce572f999c33975e121d4d"));
-        checkpoints.put(523930, Sha256Hash.wrap("0000000000000bccdb11c2b1cfb0ecab452abf267d89b7f46eaf2d54ce6e652c"));
-        checkpoints.put(750000, Sha256Hash.wrap("00000000000000b4181bbbdddbae464ce11fede5d0292fb63fdede1e7c8ab21c"));
-        checkpoints.put(888900, Sha256Hash.wrap("0000000000000026c29d576073ab51ebd1d3c938de02e9a44c7ee9e16f82db28"));
-        checkpoints.put(967800, Sha256Hash.wrap("0000000000000024e26c7df7e46d673724d223cf4ca2b2adc21297cc095600f4"));
-        checkpoints.put(1067570, Sha256Hash.wrap("000000000000001e09926bcf5fa4513d23e870a34f74e38200db99eb3f5b7a70"));
-        checkpoints.put(1167570, Sha256Hash.wrap("000000000000000fb7b1e9b81700283dff0f7d87cf458e5edfdae00c669de661"));
-        checkpoints.put(1364585, Sha256Hash.wrap("00000000000000022f355c52417fca9b73306958f7c0832b3a7bce006ca369ef"));
-        checkpoints.put(1450000, Sha256Hash.wrap("00000000000000105cfae44a995332d8ec256850ea33a1f7b700474e3dad82bc"));
-
+        checkpoints.put(  1,    Sha256Hash.wrap("00000648eb31922308dfb7b561a53dd89601ecc7790848cc69c8cf24cf93c8e4"));
+        checkpoints.put(  10,   Sha256Hash.wrap("00000b789ab605a84769b7616fff73677f83117bfd351195b7ea3720717dd25c"));
+        checkpoints.put(  100,  Sha256Hash.wrap("0000055e010d5de3f8283eec89f1cad40c77a8b52d78c6a13818a2bbc96e1f42"));
+        checkpoints.put(  300,  Sha256Hash.wrap("00000966010cdeedf882fa87a22cce50b5d1045c0ac7e2a41330e99db12c3c35"));
+        checkpoints.put(  1500, Sha256Hash.wrap("000000a263fc497f9854995dca41aab1788967b0093cb71b403cfa08251ec8d6"));
+        checkpoints.put(  2000, Sha256Hash.wrap("00000bd1d9e66d1a23ed2d53f66e88e61c0cf6af5386bdbba8a63ec64a24ae05"));
         // Dash does not have a Http Seeder
         // If an Http Seeder is set up, add it here.  References: HttpDiscovery
         httpSeeds = null;
 
         // updated with Dash Core 0.17.0.3 seed list
         addrSeeds = new int[] {
-                0xddd53802,
-                0xbe430205,
-                0x3a490205,
-                0x22ed0905,
-                0xf36d4f05,
-                0xe12c6505,
-                0x12cab505,
-                0x48fdbd05,
-                0x09f48b12,
-                0x94819d12,
-                0x2af65117,
-                0x17a3e317,
-                0x4ce8e417,
-                0xe1d5fd17,
-                0x24610a1f,
-                0x6863941f,
-                0xf263941f,
-                0x3204b21f,
-                0x765b5222,
-                0xf2aa5322,
-                0x45336922,
-                0xde367f22,
-                0x4c497f22,
-                0xf2edd122,
-                0xa826d723,
-                0x38e31225,
-                0x15e36125,
-                0x7785c22a,
-                0x2e4de52b,
-                0x1818212d,
-                0x6b40382d,
-                0x689f472d,
-                0xf1274c2d,
-                0x43424d2d,
-                0x472e4f2d,
-                0x2d75552d,
-                0x53a2562d,
-                0x55a2562d,
-                0x9aa2562d,
-                0xbdbd1e2e,
-                0xd5bd1e2e,
-                0xd6bd1e2e,
-                0xfbbd1e2e,
-                0xf228242e,
-                0x1cf1fe2e,
-                0x1476382f,
-                0xe8985b2f,
-                0x6a7b622f,
-                0x5baf1132,
-                0xb70e7432,
-                0xce600f33,
-                0x2a750f33,
-                0xe6b32633,
-                0xd2bf5333,
-                0xd5479033,
-                0xeda99e33,
-                0x3c8dca34,
-                0x60b9a436,
-                0x2bdada36,
-                0x8cbeab3e,
-                0x8ebeab3e,
-                0xce41fb40,
-                0x45f3f442,
-                0xe614ca43,
-                0xd76b3d45,
-                0xd96b3d45,
-                0xf26b3d45,
-                0x4589764a,
-                0xb3d4dc4d,
-                0x0013534e,
-                0xf8885550,
-                0x8bddd350,
-                0xe784f050,
-                0xa50d4751,
-                0xf502ab51,
-                0x53e6ca52,
-                0x1715d352,
-                0xb315d352,
-                0xf015d352,
-                0x6919d352,
-                0x34743454,
-                0xccb3f254,
-                0x5bf81155,
-                0x59a5ce55,
-                0x5aa5ce55,
-                0x23f1d155,
-                0xbef1d155,
-                0x04f2d155,
-                0x62f2d155,
-                0xceaad955,
-                0x2c0d2859,
-                0x36432d59,
-                0x728cbe5d,
-                0xc9eeb05e,
-                0x8d33b75f,
-                0x9233b75f,
-                0x2735b75f,
-                0x22c4d35f,
-                0xe12dd75f,
-                0x786ed75f,
-                0xf55fa067,
-                0xfd5fa067,
-                0x5a18a16b,
-                0x46f73d6c,
-                0xa640c17b,
+                0xa2130fc2,
                 0x081c448a,
-                0xf0c7098b,
-                0xaaaaee8c,
-                0x6b355f8d,
-                0x65cdca8e,
-                0xa78e7e90,
-                0xc278ca90,
-                0x421c8391,
-                0x441c8391,
-                0x741c8391,
-                0x751c8391,
-                0x82a3ef91,
-                0xceafb992,
-                0x91414398,
-                0x4aa2659e,
-                0x1ca8659e,
-                0xcd3347a7,
-                0x3e4f56a7,
-                0x8a3677a8,
-                0xf155eba8,
-                0x315deba8,
-                0xbe68eba8,
-                0x6b7856ac,
-                0x82dad4ad,
-                0xc9e922ae,
-                0xcae922ae,
-                0xcbe922ae,
-                0xdc115eb0,
-                0x914166b0,
-                0xc6397bb0,
-                0xc8397bb0,
-                0xcb397bb0,
-                0xcd397bb0,
-                0x2b88dfb0,
-                0x81793fb2,
-                0x7e5b9db2,
-                0xb05b9db2,
-                0xb35b9db2,
-                0x4dbf44b4,
-                0xe03405b9,
-                0xaa973eb9,
-                0xae973eb9,
-                0xde6840b9,
-                0xdf6840b9,
-                0x3eca52b9,
-                0xec1675b9,
-                0xd43a7ab9,
-                0x781b8db9,
-                0x7b1b8db9,
-                0x613e8db9,
-                0x90d48eb9,
-                0x75aba5b9,
-                0x289eafb9,
-                0x8c3bb1b9,
-                0xa328b9b9,
-                0x7153e4b9,
-                0x9c53e4b9,
-                0x700af3b9,
-                0x730af3b9,
-                0x6af128bc,
-                0x28e67fbc,
-                0xf3ed7fbc,
-                0x1906a9c0,
-                0x58381dc1,
-                0x603b1dc1,
-                0xc3e81ac2,
-                0x884bb6c2,
-                0xdb5f62c3,
-                0x11d2b5c3,
-                0x40d3b5c3,
-                0xe31b39c6,
-                0xad807ac8,
-                0x70c63dca,
-                0xd3f83dca,
-                0x263f81d4,
-                0xce7941d5,
-                0x5f93bdd8,
-                0xb293bdd8,
-                0x5e97bdd8,
-                0xcf97bdd8
+		0x9e65d77a,
+		0x037e37b9,
+		0x57976721,
+		0xa2130fc0,
+		0xcc0cc47a,
+		0xa2130fc0,
+		0x8f2a1e6f,
+		0xac695688,
+		0x51a99a0a
         };
 
 
-        strSporkAddress = "Xgtyuk76vhuFW2iT7UAiHgNdWXCf3J34wh";
+        strSporkAddress = "PTHvArEmTAk13Mc9R9QVGhzW3vwnc46S7c";
         minSporkKeys = 1;
-        budgetPaymentsStartBlock = 328008;
+        budgetPaymentsStartBlock = 1000;
         budgetPaymentsCycleBlocks = 16616;
         budgetPaymentsWindowBlocks = 100;
 
-        DIP0001BlockHeight = 782208;
+        DIP0001BlockHeight = 100;
 
         fulfilledRequestExpireTime = 60*60;
         masternodeMinimumConfirmations = 15;
-        superblockStartBlock = 614820;
+        superblockStartBlock = 1000;
         superblockCycle = 16616;
         nGovernanceMinQuorum = 10;
         nGovernanceFilterElements = 20000;
 
-        powDGWHeight = 34140;
-        powKGWHeight = 15200;
         powAllowMinimumDifficulty = false;
         powNoRetargeting = false;
 

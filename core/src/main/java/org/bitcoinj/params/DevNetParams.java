@@ -108,8 +108,6 @@ public class DevNetParams extends AbstractBitcoinNetParams {
         nGovernanceMinQuorum = 1;
         nGovernanceFilterElements = 500;
 
-        powDGWHeight = 4001;
-        powKGWHeight = 4001;
         powAllowMinimumDifficulty = true;
         powNoRetargeting = false;
         this.supportsV18 = supportsV18;

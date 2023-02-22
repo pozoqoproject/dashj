@@ -54,15 +54,9 @@ public class X11 {
     static Digest [] initAlgorithms() {
         return new Digest[] {
                 new BLAKE512(),
-                new BMW512(),
                 new Groestl512(),
-                new Skein512(),
-                new JH512(),
-                new Keccak512(),
-                new Luffa512(),
                 new CubeHash512(),
                 new SHAvite512(),
-                new SIMD512(),
                 new ECHO512()
         };
     }
@@ -85,7 +79,7 @@ public class X11 {
         algorithm.update(input, offset, length);
         byte [] hash512 = algorithm.digest();
         int count = 1;
-        while (count < 11) {
+        while (count < 5) {
             algorithm = algorithms[count];
             algorithm.reset();
             algorithm.update(hash512);
