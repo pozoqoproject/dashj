@@ -270,7 +270,7 @@ public abstract class NetworkParameters {
     /**
      * The maximum number of coins to be generated
      */
-    public static final long MAX_COINS = 22000000000;
+    public static final long MAX_COINS = 22000000;
 
     /**
      * The maximum money to be generated

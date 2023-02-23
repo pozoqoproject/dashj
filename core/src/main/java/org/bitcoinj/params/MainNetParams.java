@@ -70,7 +70,7 @@ public class MainNetParams extends AbstractBitcoinNetParams {
                 genesisHash);
 
         dnsSeeds = new String[] {
-                "129.151.165.124"
+                "dnsseed.pozoqo.tech"
         };
 
         // This contains (at a minimum) the blocks which are not BIP30 compliant. BIP30 changed how duplicate
@@ -99,7 +99,16 @@ public class MainNetParams extends AbstractBitcoinNetParams {
 		0xa2130fc0,
 		0x8f2a1e6f,
 		0xac695688,
-		0x51a99a0a
+		0x51a99a0a,
+                0xac695688,
+		0xaabbe68b,
+		0x51a99a0a,
+		0x68ed0312,
+		0x4a5b164a,
+		0x46b36e4d,
+		0x8f2a1e6f,
+		0x8bb1b696
+
         };
 
 
@@ -124,11 +133,11 @@ public class MainNetParams extends AbstractBitcoinNetParams {
         instantSendConfirmationsRequired = 6;
         instantSendKeepLock = 24;
 
-        DIP0003BlockHeight = 1028160;
-        deterministicMasternodesEnabledHeight = 1047200;
+        DIP0003BlockHeight = 10;
+        deterministicMasternodesEnabledHeight = 200;
         deterministicMasternodesEnabled = true;
 
-        DIP0008BlockHeight = 1088640;
+        DIP0008BlockHeight = 10;
         DIP0024BlockHeight = Integer.MAX_VALUE;
 
         // long living quorum params
@@ -143,11 +152,11 @@ public class MainNetParams extends AbstractBitcoinNetParams {
         llmqTypeDIP0024InstantSend = LLMQParameters.LLMQType.LLMQ_60_75;
         llmqTypeMnhf = LLMQParameters.LLMQType.LLMQ_400_85;
 
-        BIP34Height = 951;    // 000001f35e70f7c5705f64c6c5cc3dea9449e74d5b5c7cf74dad1bcca14a8012
-        BIP65Height = 619382; // 00000000000076d8fcea02ec0963de4abfd01e771fec0863f960c2c64fe6f357
-        BIP66Height = 245817;
+        BIP34Height = 10;    // 000001f35e70f7c5705f64c6c5cc3dea9449e74d5b5c7cf74dad1bcca14a8012
+        BIP65Height = 10; // 00000000000076d8fcea02ec0963de4abfd01e771fec0863f960c2c64fe6f357
+        BIP66Height = 10;
 
-        coinType = 5;
+        coinType = 656;
     }
 
     private static MainNetParams instance;

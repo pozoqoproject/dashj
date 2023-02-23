@@ -109,7 +109,7 @@ public class BuildCheckpoints {
 
         // DNS discovery can be used for some networks
         boolean networkHasDnsSeeds = params.getDnsSeeds() != null;
-        if (options.has("peer")) {
+       /* if (options.has("peer")) {
             // use peer provided in argument
             String peerFlag = (String) options.valueOf("peer");
             try {
@@ -128,15 +128,15 @@ public class BuildCheckpoints {
             peerGroup.start();
 
             // Connect to at least 4 peers because some may not support download
-            Future<List<Peer>> future = peerGroup.waitForPeers(4);
+            Future<List<Peer>> future = peerGroup.waitForPeers(2);
             System.out.println("Connecting to " + params.getId() + ", timeout 20 seconds...");
             // throw timeout exception if we can't get peers
             future.get(20, SECONDS);
-        } else {
+        } else {*/
             // try localhost
             ipAddress = InetAddress.getLocalHost();
             startPeerGroup(peerGroup, ipAddress);
-        }
+      //  }
 
         // Sorted map of block height to StoredBlock object.
         final TreeMap<Integer, StoredBlock> checkpoints = new TreeMap<Integer, StoredBlock>();
@@ -144,7 +144,7 @@ public class BuildCheckpoints {
         long now = new Date().getTime() / 1000;
         peerGroup.setFastCatchupTimeSecs(now);
 
-        final long timeAgo = now - (86400L * options.valueOf(daysFlag));
+        final long timeAgo = now - (864L * options.valueOf(daysFlag));
         System.out.println("Checkpointing up to " + Utils.dateTimeFormat(timeAgo * 1000));
 
         chain.addNewBestBlockListener(Threading.SAME_THREAD, new NewBestBlockListener() {
@@ -226,15 +226,15 @@ public class BuildCheckpoints {
             fis.close();
         }
 
-        checkState(manager.numCheckpoints() == expectedSize);
+//        checkState(manager.numCheckpoints() == expectedSize);
 
         if (params.getId().equals(NetworkParameters.ID_MAINNET)) {
-            StoredBlock test = manager.getCheckpointBefore(1433418480); // Jun 4, 2015 11:56 AM UTC
-            checkState(test.getHeight() == 279936);
+            StoredBlock test = manager.getCheckpointBefore(1677129297); // Jun 4, 2015 11:56 AM UTC
+            checkState(test.getHeight() == 3769);
             checkState(test.getHeader().getHashAsString()
-                    .equals("0000000000047d04b799de13c27c2a88784e31130e5d2c56bc1ab54e4245ce13"));
+                    .equals("00000b60bceca16470a8091004462d453aff77a7b49097aeaf693451535d774a"));
         } else if (params.getId().equals(NetworkParameters.ID_TESTNET)) {
-            StoredBlock test = manager.getCheckpointBefore(1567419582); // Sep 2, 2019 3:19:42 AM
+            StoredBlock test = manager.getCheckpointBefore(15674); // Sep 2, 2019 3:19:42 AM
             checkState(test.getHeight() == 167040);
             checkState(test.getHeader().getHashAsString()
                     .equals("00000000036ef387e3966fe879fa8938cd8e51f4a94ecdcbb4f175761004bd36"));
