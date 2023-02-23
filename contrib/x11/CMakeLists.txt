@@ -9,5 +9,5 @@ if (JNI_FOUND)
     message (STATUS "JNI_LIBRARIES=${JNI_LIBRARIES}")
 endif()
 
-add_library(x11 SHARED aes_helper.c blake.c bmw.c cubehash.c echo.c groestl.c hashblock.cpp keccak.c jh.c luffa.c shavite.c simd.c skein.c)
+add_library(x11 SHARED aes_helper.c blake.c cubehash.c echo.c groestl.c hashblock.cpp  shavite.c)
 include_directories(${JNI_INCLUDE_DIRS})
